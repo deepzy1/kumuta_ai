@@ -1,0 +1,10 @@
+import React,{useEffect,useState} from 'react';
+import {jsonBody} from './api.js';
+import {canvasURL} from './platformSession.js';
+import {allPages} from './workspaceData.js';
+import Modal,{ErrorNotice} from './Modal.jsx';
+export default function ProjectCanvas({api,project}) {
+  const [rows,setRows]=useState([]),[error,setError]=useState(''),[busy,setBusy]=useState(false),[create,setCreate]=useState(false),[reload,setReload]=useState(0);
+  useEffect(()=>{const abort=new AbortController();setBusy(true);allPages(api,`/boards?workspace_id=${project.workspace_id}&project_id=${project.id}`,{signal:abort.signal}).then(setRows).catch(e=>{if(!abort.signal.aborted)setError(e.message);}).finally(()=>{if(!abort.signal.aborted)setBusy(false);});return()=>abort.abort();},[api,project.id,reload]);
+  return <section className="ws-page"><div className="ws-page-title"><h2>Canvas Boards</h2><button className="primary" disabled={project.archived} onClick={()=>setCreate(true)}>＋ New Canvas Board</button></div><p>Boards in {project.name}. Drawings, resources and chat remain together.</p><ErrorNotice error={error} retry={()=>setReload(n=>n+1)}/>{busy?<p role="status">Loading boards…</p>:<div className="ws-project-grid">{rows.map(board=><a className="ws-project-card" key={board.id} href={canvasURL().split('#')[0]+`#/board/${board.id}`}><h3>{board.title}</h3><small>Revision {board.current_revision}</small></a>)}</div>}<a href={canvasURL(project.workspace_id,project.id)}>Open Canvas library →</a>{create&&<Modal title="New Canvas Board" onClose={()=>setCreate(false)}><form className="dialog-form" onSubmit={async e=>{e.preventDefault();const title=new FormData(e.currentTarget).get('title');setBusy(true);try{const board=await api('/boards',{method:'POST',...jsonBody({workspace_id:project.workspace_id,project_id:project.id,title})});location.assign(canvasURL().split('#')[0]+`#/board/${board.id}`);}catch(e){setError(e.message);setBusy(false);}}}><label>Board name<input name="title" required maxLength={200}/></label><ErrorNotice error={error}/><button className="primary" disabled={busy}>Create board</button></form></Modal>}</section>;
+}

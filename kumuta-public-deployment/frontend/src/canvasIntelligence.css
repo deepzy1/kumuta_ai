@@ -1,0 +1,15 @@
+.canvas-intelligence{display:grid;gap:7px;min-width:0;color:#111111;background:#FFFFFF;font-size:12px;border-top:1px solid #e7e7e7;padding-top:8px;max-height:min(26vh,210px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.canvas-ai .canvas-intelligence label{display:flex;flex-direction:row;align-items:center;gap:6px;min-width:0;flex-wrap:wrap;text-align:left}
+.canvas-ai .canvas-intelligence fieldset label{display:grid;grid-template-columns:76px minmax(0,1fr);gap:6px}
+.canvas-ai .generation-composer{max-height:65%;overflow-y:auto}
+.canvas-intelligence select{min-width:0;max-width:100%;flex:1;border:1px solid #ddd;border-radius:6px;padding:5px;background:#fff;color:#111}
+.canvas-intelligence small{display:block;overflow-wrap:anywhere;line-height:1.4;color:#5c6570}
+.intelligence-actions{display:flex;flex-wrap:wrap;gap:4px}
+.canvas-intelligence button{font-size:12px;padding:5px 7px;white-space:normal;overflow-wrap:anywhere}
+.canvas-intelligence button[aria-pressed=true]{background:#FF6500;color:#fff;border-color:#FF6500}
+.intelligence-source-list{max-height:150px;overflow:auto;display:grid;gap:5px;padding:6px 0}
+.canvas-intelligence input[type=checkbox]{accent-color:#FF6500;flex:none}
+.canvas-intelligence fieldset{border:1px solid #eee;border-radius:6px;display:grid;gap:5px;margin:7px 0;min-width:0}
+.intelligence-search-results{max-height:220px;overflow:auto}.intelligence-search-results p{white-space:pre-wrap;overflow-wrap:anywhere}
+.intelligence-computed{padding:6px;border:1px solid #eee;border-radius:6px;overflow-wrap:anywhere}
+@media(max-width:760px){.canvas-intelligence{max-height:105px}.canvas-ai .generation-composer{max-height:75%}}

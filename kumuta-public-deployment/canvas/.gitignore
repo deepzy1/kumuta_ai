@@ -1,0 +1,13 @@
+node_modules/
+dist/
+public/fonts/
+.env
+.env.*
+*.local
+*.log
+
+# Keep environment templates trackable despite the local .env.* rule.
+!.env.example
+!.env.sample
+!.env.*.example
+!.env.*.sample

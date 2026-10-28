@@ -1,0 +1,57 @@
+.mode-page{max-width:1180px;margin:auto;padding:8px 0 32px}.mode-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 24px}.mode-heading h2{font-size:28px;font-weight:650;margin:6px 0}.mode-heading p,.mode-card p{color:var(--muted,#6b7280);margin:10px 0;overflow-wrap:anywhere}.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin:20px 0}.mode-card{border:1px solid var(--border,#e5e7eb);background:var(--panel,#fff);border-radius:16px;padding:20px;margin:16px 0;min-width:0;overflow-wrap:anywhere}.mode-card h3{font-size:19px;font-weight:650;margin:8px 0 12px}.mode-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}.mode-summary{display:flex;gap:28px;flex-wrap:wrap;padding:22px;background:#fff7ed;border-radius:16px}.mode-summary strong{display:block;font-size:26px;color:#c2410c}.mode-progress{display:flex;gap:12px;align-items:center;margin:14px 0}.mode-progress progress{width:100%;height:9px;accent-color:#ea580c}.mode-origin{color:#9a3412}.mode-tabs{display:flex;gap:6px;overflow-x:auto;margin:20px 0;border-bottom:1px solid #eee;padding-bottom:10px}.mode-tabs button{padding:8px 16px;border-radius:8px;white-space:nowrap}.mode-tabs .active,.study-lesson.active{background:#fff0e5;color:#c2410c}.study-reader{display:grid;grid-template-columns:minmax(220px,30%) minmax(0,1fr);gap:24px}.study-chapter{margin:18px 0;padding:12px;border:1px solid #eee;border-radius:12px}.study-chapter h3{font-weight:650}.study-lesson{text-align:left;width:100%;padding:12px 4px;margin-top:12px;overflow-wrap:anywhere}.mode-form{display:grid;gap:16px}.mode-field{display:grid;gap:6px;min-width:0;margin:8px 0}.mode-field>span{font-weight:550;font-size:14px}.mode-field input,.mode-field textarea,.mode-field select,.mode-milestone input{width:100%;border:1px solid #ddd;border-radius:8px;padding:10px;background:var(--panel,#fff);color:inherit;min-width:0}.mode-field select[multiple]{min-height:100px}.mode-field textarea{resize:vertical;min-height:90px}.mode-form fieldset,.mode-card fieldset{border:1px solid #e5e7eb;border-radius:10px;padding:14px;margin:10px 0;min-width:0}.mode-form legend{font-weight:600;padding:0 6px}.mode-form input[type=checkbox],.mode-milestone input[type=checkbox]{width:auto;accent-color:#ea580c}.mode-milestone{display:grid;grid-template-columns:minmax(0,1fr) 140px auto auto;align-items:center;gap:8px;margin:10px 0}.mode-pre{white-space:pre-wrap}.quiz-option{display:flex;gap:12px;margin:12px 0;align-items:center}.quiz-option input{accent-color:#ea580c}.flash-review{text-align:center}.flash-face{font-size:23px;padding:40px 15px;min-height:170px;white-space:pre-wrap}.focus-clock{font-variant-numeric:tabular-nums;font-size:clamp(42px,9vw,88px);letter-spacing:-2px;margin:24px 0;color:#c2410c}.focus-screen{max-width:850px;margin:auto}.focus-immersive .sidebar-overlay,.focus-immersive .ws-sidebar,.focus-immersive>aside,.focus-immersive .ws-topbar,.focus-immersive .ws-project-header,.focus-immersive .ws-tabs{display:none!important}.focus-immersive .ws-main{width:100%;margin:0}.focus-immersive .ws-project-content{padding:16px}.mode-time-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #eee;padding:12px 0}.mode-field small{color:#6b7280}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #ea580c;outline-offset:3px}@media(max-width:700px){.mode-heading{align-items:flex-start;flex-wrap:wrap}.study-reader{grid-template-columns:1fr}.mode-heading h2{font-size:23px}.mode-card{padding:14px}.mode-summary{gap:18px}.mode-milestone{grid-template-columns:minmax(0,1fr) auto}.mode-tabs button{padding:8px 10px}.mode-page{padding:0 0 20px}.focus-immersive .ws-project-content{padding:8px}}
+
+.mode-progress progress{flex:1;min-width:0;width:auto}.mode-progress span{white-space:nowrap}.mode-progress progress::-webkit-progress-bar{background:#f3f4f6;border-radius:8px}.mode-progress progress::-webkit-progress-value{background:#ea580c;border-radius:8px}.mode-progress progress::-moz-progress-bar{background:#ea580c;border-radius:8px}
+
+/* Study and Focus editors share the portal modal, outside .mode-page. */
+.ws-modal > .mode-form {
+  padding: 24px;
+  gap: 20px;
+}
+.ws-modal > .mode-form .mode-field { margin: 0; }
+.mode-form > label:not(.mode-field),
+.mode-form fieldset label:not(.mode-field) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mode-form input[type=checkbox] {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+.ws-modal > .mode-form > .mode-actions {
+  justify-content: flex-end;
+  margin-top: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+@media (max-width: 700px) {
+  .ws-modal > .mode-form { padding: 18px; gap: 18px; }
+}
+
+/* UX 2.0: shared white surfaces, readable content and a timer-first composition. */
+.mode-card { border-radius: var(--radius,12px); background: var(--surface,#fff); }
+.mode-summary { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); }
+.mode-summary strong { color: var(--text); }
+.mode-card small, .mode-field small { font-size: 13px; color: var(--muted); }
+.study-source-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.study-source-options button { border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: left; display: grid; gap: 8px; }
+.study-source-options button.selected { border-color: var(--orange); background: #fffaf7; }
+.study-source-options span { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.study-outline-lesson { padding: 12px 0; border-top: 1px solid var(--border); }
+.study-consent { display: flex; align-items: flex-start; gap: 12px; line-height: 1.6; }
+.study-create { padding: 24px; }.study-source-references { margin-top: 24px; }
+.study-reader .markdown { font-size: 16px; line-height: 1.8; }
+.study-reader aside .mode-actions { gap: 6px; }.study-reader aside .mode-actions button { font-size: 13px; }
+.focus-session-layout { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 24px; align-items: start; }
+.focus-timer-card { text-align: center; grid-row: span 2; margin: 0; }
+.focus-timer-card .mode-actions { justify-content: center; }.focus-timer-card .mode-field { text-align: left; }
+.focus-ring { width: min(280px,100%); aspect-ratio: 1; padding: 9px; border-radius: 50%; margin: 24px auto; background: conic-gradient(var(--orange) var(--timer-progress,0%),#fff0e5 0); display: grid; place-items: center; }
+.focus-clock { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; background: #fff; color: var(--text); font-size: clamp(44px,6vw,76px); margin: 0; letter-spacing: -2px; }
+.focus-session-help { font-size: 14px; line-height: 1.7; }.focus-support { min-width: 0; }.focus-support > summary { padding: 16px 0; }
+.mode-tabs button, .study-lesson, .focus-presets button { min-height: 44px; }
+@media(max-width:768px) { .focus-session-layout { grid-template-columns: minmax(0,1fr); gap: 16px; }.focus-timer-card { grid-row: auto; }.focus-ring { width: min(250px,100%); }.study-create { padding: 18px; } }
+@media(max-width:390px) { .study-source-options { grid-template-columns: minmax(0,1fr); }.focus-ring { width: min(220px,100%); }.mode-tabs { max-width: 100%; }.mode-heading h2 { overflow-wrap: anywhere; } }
+.focus-ring-body { width: 100%; height: 100%; background: #fff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }.focus-ring-body .focus-clock { height: auto; background: transparent; border-radius: 0; }.focus-ring-body > button { min-height: 44px; min-width: 110px; }
+.study-outline { min-width: 0; }.study-outline > summary { cursor: pointer; padding: 14px 0; min-height: 44px; font-weight: 600; }.study-chapter details > summary { cursor: pointer; padding: 10px 0; min-height: 44px; color: var(--muted); font-size: 14px; }.study-lesson-content { line-height: 1.8; margin-top: 0; }
+@media(max-width:700px) { .study-reader { gap: 12px; }.study-outline { border-bottom: 1px solid var(--border); }.study-chapter { margin-top: 8px; }.study-lesson-content { padding: 18px 14px; } }

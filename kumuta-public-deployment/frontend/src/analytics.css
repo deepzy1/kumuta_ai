@@ -1,0 +1,26 @@
+.analytics { min-width:0; margin:24px 0; }
+.analytics-filters { display:flex; flex-wrap:wrap; gap:12px; align-items:end; padding:16px; background:#fff7ed; border:1px solid #fed7aa; border-radius:16px; margin-bottom:18px; }
+.analytics-filters label,.analytics-grain { display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; }
+.analytics-filters input,.analytics-filters select,.analytics-grain select { max-width:100%; min-height:38px; border:1px solid #d6d3d1; border-radius:8px; background:white; padding:8px; color:#292524; }
+.analytics-filters form { display:flex; gap:8px; align-items:end; flex-wrap:wrap; }
+.analytics-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:16px 0; }
+.analytics-card { padding:18px; border:1px solid #e7e5e4; border-radius:14px; background:white; min-width:0; margin:12px 0; }
+.analytics-card h3 { margin:0 0 12px; font-size:16px; }
+.analytics-stats .analytics-card { display:flex; flex-direction:column; gap:8px; margin:0; }
+.analytics-stats strong { font-size:24px; color:#9a3412; }
+.analytics-stats span,.analytics-card .muted { font-size:13px; color:#57534e; }
+.analytics-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.analytics-table { overflow:auto; max-height:360px; }
+.analytics-table table { width:100%; border-collapse:collapse; font-size:13px; }
+.analytics-table th,.analytics-table td { padding:10px 8px; text-align:left; border-bottom:1px solid #e7e5e4; overflow-wrap:anywhere; min-width:70px; }
+.analytics-table th { background:#fafaf9; }
+.analytics-chart { width:100%; height:190px; display:block; }
+.analytics-chart text { font-size:11px; fill:#57534e; }
+.analytics-legend,.analytics-pagination { display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-size:13px; }
+.analytics-legend span { display:flex; align-items:center; gap:6px; }
+.analytics-legend i { width:10px; height:10px; border-radius:2px; }
+.analytics-grain { width:180px; margin-top:16px; }
+.analytics summary { cursor:pointer; font-weight:600; }
+.analytics li { margin:8px 0; font-size:13px; }
+@media(max-width:800px) { .analytics-grid { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:480px) { .analytics-filters { padding:12px; } .analytics-filters > label,.analytics-filters form { width:100%; } .analytics-filters input { width:100%; } .analytics-filters form label { flex:1; min-width:120px; } .analytics-card { padding:12px; } .analytics-pagination span { width:100%; } }
