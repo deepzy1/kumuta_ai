@@ -4,6 +4,15 @@ import os
 from pathlib import Path
 from starlette.types import ASGIApp, Receive, Scope, Send
 from starlette.responses import FileResponse, Response, PlainTextResponse
+# Auto-generate secure random secrets if not provided in environment
+if len(os.getenv("JWT_SECRET", "")) < 32:
+    import secrets
+    os.environ["JWT_SECRET"] = secrets.token_urlsafe(48)
+
+if not os.getenv("API_KEY_ENCRYPTION_KEY"):
+    from cryptography.fernet import Fernet
+    os.environ["API_KEY_ENCRYPTION_KEY"] = Fernet.generate_key().decode()
+
 from .main import app as api_app
 
 DIST_DIR = Path(os.getenv("FRONTEND_DIST", Path(__file__).resolve().parents[2] / "frontend" / "dist")).resolve()

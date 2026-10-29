@@ -59,7 +59,9 @@ ENV PYTHONUNBUFFERED=1 \
     KUMUTA_ENV=development \
     DATABASE_URL=sqlite:////data/db/chat.db \
     DOCUMENT_STORAGE_DIR=/data/documents \
-    FRONTEND_DIST=/app/frontend/dist
+    FRONTEND_DIST=/app/frontend/dist \
+    JWT_SECRET=default_demo_jwt_secret_render_production_32chars \
+    API_KEY_ENCRYPTION_KEY=EdhgCI45B2amJZT9q0_aVzxw-uuagbbtctevvKWg1kg=
 
 # Switch to the non-root user
 USER kumuta
