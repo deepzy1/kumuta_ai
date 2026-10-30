@@ -9,7 +9,7 @@ import time
 from datetime import datetime, timezone
 
 import pymupdf as fitz
-from cryptography.fernet import Fernet, InvalidToken
+from cryptography.fernet import Fernet, InvalidToken, MultiFernet
 from fastapi import HTTPException
 from google import genai
 from google.genai import types
@@ -24,9 +24,14 @@ _context_cache = {}
 
 
 def cipher():
-    key = os.getenv('API_KEY_ENCRYPTION_KEY', '')
+    raw = os.getenv('API_KEY_ENCRYPTION_KEY', '').strip()
+    keys = [k.strip().encode() for k in raw.split(',') if k.strip()]
     try:
-        return Fernet(key.encode())
+        if len(keys) == 1:
+            return Fernet(keys[0])
+        elif len(keys) > 1:
+            return MultiFernet([Fernet(k) for k in keys])
+        raise ValueError('No key provided')
     except (ValueError, TypeError):
         raise RuntimeError('Set API_KEY_ENCRYPTION_KEY to a Fernet key; see .env.example') from None
 

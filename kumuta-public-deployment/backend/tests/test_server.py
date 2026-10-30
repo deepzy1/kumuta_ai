@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 from starlette.testclient import TestClient
 
+from cryptography.fernet import Fernet
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,10 +12,18 @@ temp_db_path = temp_db.name
 temp_db.close()
 
 os.environ['JWT_SECRET'] = 'test-secret-at-least-32-chars-long-for-testing'
-os.environ['API_KEY_ENCRYPTION_KEY'] = 'EdhgCI45B2amJZT9q0_aVzxw-uuagbbtctevvKWg1kg='
+os.environ['API_KEY_ENCRYPTION_KEY'] = Fernet.generate_key().decode()
 os.environ['DATABASE_URL'] = f'sqlite:///{temp_db_path}'
 os.environ['KUMUTA_ENV'] = 'development'
-os.environ['FRONTEND_DIST'] = str(Path(__file__).resolve().parents[2] / 'frontend' / 'dist')
+
+dist_dir = Path(__file__).resolve().parents[2] / 'frontend' / 'dist'
+if not (dist_dir / 'index.html').exists():
+    _mock_dist = tempfile.TemporaryDirectory()
+    dist_dir = Path(_mock_dist.name)
+    (dist_dir / 'index.html').write_text('<!DOCTYPE html><html><body><div id="root"></div></body></html>')
+    (dist_dir / 'canvas.html').write_text('<!DOCTYPE html><html><head><title>Kumuta Canvas</title></head><body>Kumuta Canvas</body></html>')
+    (dist_dir / 'kumuta.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg"></svg>')
+os.environ['FRONTEND_DIST'] = str(dist_dir)
 
 from app.server import app
 
